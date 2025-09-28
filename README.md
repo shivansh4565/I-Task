@@ -1,5 +1,4 @@
 
-````markdown
 # 📋 iTask - Todo App
 
 iTask is a simple and elegant Todo application built with **React + TypeScript + Tailwind CSS**.  
@@ -31,7 +30,9 @@ Each todo is stored with a unique ID (using `uuid`) to ensure smooth rendering a
 
 Clone the repository:
 ```bash
-git clone https://github.com/your-username/iTask.git
+
+git clone (https://github.com/shivansh4565/I-Task/)
+
 cd iTask
 ````
 
@@ -87,6 +88,7 @@ iTask/
  Vercel deployed link:-
  ```
  https://i-task-khaki.vercel.app/
+
  ```
 ---
 
@@ -102,4 +104,3 @@ B.Tech CSE (AI) | Full-Stack Developer in Progress 🚀
 This project is licensed under the **MIT License**.
 Feel free to use and modify it.
 
-```
