@@ -86,7 +86,7 @@ iTask/
 ## 📸 Preview
  Vercel deployed link:-
  ```
-  link:-  https://youtu.be/SBuZSalHLe0?t=2033
+ https://i-task-khaki.vercel.app/
  ```
 ---
 
