@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import type { ChangeEvent } from "react";
+
 import { v4 as uuidv4 } from "uuid";
 
 // Define Todo type
@@ -13,6 +14,7 @@ const Card: React.FC = () => {
     const [Todos, setTodos] = useState<Todo[]>([]);
     const [todo, setTodo] = useState<string>("");
 
+    // Edit a todo by index
     const handleEdit = (index: number) => {
         const newTodo = prompt("Edit Todo:", Todos[index].todo);
         if (newTodo !== null && newTodo.trim() !== "") {
@@ -22,26 +24,30 @@ const Card: React.FC = () => {
         }
     };
 
+    // Delete a todo by index
     const handleDelete = (index: number) => {
         const updatedTodos = Todos.filter((_, i) => i !== index);
         setTodos(updatedTodos);
     };
 
+    // Add a new todo
     const handleAdd = () => {
         if (todo.trim() === "") return;
         setTodos([...Todos, { id: uuidv4(), todo, isCompleted: false }]);
         setTodo("");
     };
 
+    // Handle input change
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setTodo(e.target.value);
     };
 
+    // Toggle checkbox completion
     const handleCheckbox = (e: ChangeEvent<HTMLInputElement>) => {
-        const id = e.target.id;
-        console.log("Checkbox clicked, ID:", id); // ✅ Logs todo id
+        const target = e.target as HTMLInputElement; // ✅ type assertion
+        const id = target.id;
         const index = Todos.findIndex((t) => t.id === id);
-        if (index === -1) return; // Not found
+        if (index === -1) return;
         const updatedTodos = [...Todos];
         updatedTodos[index].isCompleted = !updatedTodos[index].isCompleted;
         setTodos(updatedTodos);
@@ -86,7 +92,7 @@ const Card: React.FC = () => {
                             <div className="flex items-center gap-3">
                                 <input
                                     type="checkbox"
-                                    id={item.id} // ✅ important
+                                    id={item.id}
                                     checked={item.isCompleted}
                                     onChange={handleCheckbox}
                                     className="w-5 h-5 accent-green-500"
@@ -100,7 +106,7 @@ const Card: React.FC = () => {
                             </div>
                             <div className="button flex gap-3">
                                 <button
-                                    onClick={() => handleEdit(index,todo.id)}
+                                    onClick={() => handleEdit(index)}
                                     className="px-3 py-1 bg-blue-600 hover:bg-blue-500 text-sm rounded-md text-white transition"
                                 >
                                     ✏️ Edit
